@@ -8,6 +8,11 @@ def add_student():
         f.writelines(data)
 
 
+def view_student():
+    print('---------------Viewing the database------------------')
+    with open('data.txt','r') as f:
+        data=f.read()
+        print(data)
 
 
 def main():
