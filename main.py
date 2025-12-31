@@ -14,6 +14,20 @@ def view_student():
         data=f.read()
         print(data)
 
+def search_student():
+    print('-------------------Search student by reg no---------------------')
+    find_no=input('Enter the register number of the student to find : ')
+    with open('data.txt','r') as f:
+        data=f.readlines()
+        for line in data:
+            if line.startswith(find_no):
+                roll_no,name,marks=line.split(',')
+                print('Student Found : ')
+                print(f'Register No : {roll_no}')
+                print(f'Name of the student : {name}')
+                print(f'Marks Scored : {marks}')
+        else:
+            print('Student Record Not Found')
 
 def main():
     while True:
