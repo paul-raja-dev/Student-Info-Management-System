@@ -15,7 +15,7 @@ def view_student():
         print(data)
 
 def search_student():
-    print('-------------------Search student by reg no---------------------')
+    print('-----------------Search Student----------------------')
     find_no=input('Enter the register number of the student to find : ')
     with open('data.txt','r') as f:
         data=f.readlines()
@@ -26,8 +26,24 @@ def search_student():
                 print(f'Register No : {roll_no}')
                 print(f'Name of the student : {name}')
                 print(f'Marks Scored : {marks}')
+                break
         else:
             print('Student Record Not Found')
+            
+
+def delete_student():
+    print('---------------------Deleting the Entitiy--------------------')
+    reg_no=input('Enter the register number of the student to delete : ')
+    with open('data.txt','r') as f:
+        data=f.readlines()
+        updated_data=[]
+        for line in data:
+            if line.startswith(reg_no):
+                continue
+            else:
+                updated_data.append(line)
+        with open('data.txt','w') as f:
+            f.writelines(updated_data)
 
 def main():
     while True:

@@ -1,1 +1,3 @@
 reg.no|name|marks
+201,paul,90
+202,pradeeba,90
