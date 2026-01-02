@@ -31,14 +31,14 @@ def search_student():
             
 def update_student():
     print('-----------------Update Student----------------------')
-    reg_no=input('Enter the register no of the student to update Details')
+    reg_no=input('Enter the register no of the student to update Details : ')
     with open('data.txt','r') as f:
         data=f.readlines()
         update_data=[]
         for line in data:
             if line.startswith(reg_no):
                 roll_no,name,marks=line.split(',')
-                print('Student Found and current details')
+                print('Student Found and current details : ')
                 print(f'\nName : {name}'
                       f'\nMarks : {marks}'
                       f'\n------------------------------------')
@@ -59,7 +59,9 @@ def update_student():
                     print('Please Enter the Vaild Choice')
                 
             else:
-                update_data.append(i)
+                update_data.append(line)
+    with open('data.txt','w') as f:
+        f.writelines(update_data)
 
 def delete_student():
     print('---------------------Deleting the Entitiy--------------------')
