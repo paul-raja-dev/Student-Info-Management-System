@@ -7,7 +7,6 @@ def add_student():
     with open('data.txt','a') as f:
         f.writelines(data)
 
-
 def view_student():
     print('---------------Viewing the database------------------')
     with open('data.txt','r') as f:
@@ -30,6 +29,37 @@ def search_student():
         else:
             print('Student Record Not Found')
             
+def update_student():
+    print('-----------------Update Student----------------------')
+    reg_no=input('Enter the register no of the student to update Details')
+    with open('data.txt','r') as f:
+        data=f.readlines()
+        update_data=[]
+        for line in data:
+            if line.startswith(reg_no):
+                roll_no,name,marks=line.split(',')
+                print('Student Found and current details')
+                print(f'\nName : {name}'
+                      f'\nMarks : {marks}'
+                      f'\n------------------------------------')
+                print('TO UPDATE'
+                      f'\n Name -> 1'
+                      f'\n Marks -> 2')
+                choice=int(input('Enter the field : '))
+                if choice==1:
+                    new_name=input('Enter the new name : ')
+                    formatted_name=reg_no+','+new_name+','+marks+'\n'
+                    update_data.append(formatted_name)
+                    
+                elif choice==2:
+                    new_marks=input('Enter the new marks : ')
+                    formatted_marks=reg_no+','+name+','+new_marks+'\n'
+                    update_data.append(formatted_marks)
+                else:
+                    print('Please Enter the Vaild Choice')
+                
+            else:
+                update_data.append(i)
 
 def delete_student():
     print('---------------------Deleting the Entitiy--------------------')
