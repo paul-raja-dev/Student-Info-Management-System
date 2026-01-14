@@ -17,6 +17,7 @@ CREATE TABLE subjects(
     subject_name VARCHAR(50),
     credits INT
 );
+ALTER TABLE marks AUTO_INCREMENT =301;
 
 CREATE TABLE marks(
     marks_id INT PRIMARY KEY AUTO_INCREMENT,

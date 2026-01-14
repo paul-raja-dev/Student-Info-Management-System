@@ -1,4 +1,5 @@
 import students
+import subjects
 def student():
         print(""" 
             1 -> Add student
@@ -103,7 +104,47 @@ def student():
             print('Enter the correct chocie... ')
  
 
+def subject():
+        print(""" 
+            1 -> Add Subject
+            2 -> View the Available Subject
+            3 -> Search Subject
+            4 -> Update Subject
+            5 -> Delete Subject
+            """)
+        choice=int(input('Enter your choice : '))
+        if choice==1:
+            course_code=input('Enter the Course Code : ')
+            course_name=input('Enter the Course Name : ')
+            credits=int(input('Enter the Credits : '))
+            subjects.add_subject((course_code,course_name,credits))
+            print('Course added successfully')
+            
+        elif choice==2:
+            print('-----------------------------')
+            print('View the Existing Subjects ')
+            print('-----------------------------')
+            data=subjects.view_subject()
+            for line in data:
+                print(line)
+            print('\n End of the Table ')
 
+        elif choice==3:
+            print('-----------------------------')
+            print('Search the Subject ')
+            print('-----------------------------')
+            sub_id=int(input('Enter the Subject ID : '))
+            info=subjects.search_subject(sub_id)
+            print(info)
+
+        elif choice==4:
+            pass
+
+        elif choice==5:
+            pass
+
+        else:
+            print('Please Enter the Valid Choice')
 
 
 def main():
@@ -117,7 +158,7 @@ def main():
         if choice==1:
             student()
         elif choice==2:
-            subjects()
+            subject()
         elif choice==3:
             marks()
         elif choice==4:
