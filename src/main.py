@@ -34,10 +34,36 @@ def student():
             print('-------------------')
             student_id=int(input('Enter the Student id to Search : '))
             info=students.search_student(student_id)
-            print(f'\n Student Details : \n {info}')
+            if info:
+                print('Student Found')
+                print(f"Register No : {info[0]['register_number']}")
+                print(f"Name : {info[0]['full_name']}")
+                print(f"E-Mail : {info[0]['e_mail']}")
+                print(f"Gender : {info[0]['gender']}")
+                dob=info[0]['date_of_birth']
+                print(f"Date Of Birth : {dob.strftime('%d-%m-%Y')}")
+
+            else:
+                print('Student Not Found')
+
 
         elif choice==4:
-            pass
+            print('-------------------')
+            print('Update student')            
+            print('-------------------')
+            student_id=int(input('Enter the Student id to Update : '))
+            info=students.search_student(student_id)
+            if info:
+                print('Student Found')
+                print(f"Register No : {info[0]['register_number']}")
+                print(f"Name : {info[0]['full_name']}")
+                print(f"E-Mail : {info[0]['e_mail']}")
+                print(f"Gender : {info[0]['gender']}")
+                dob=info[0]['date_of_birth']
+                print(f"Date Of Birth : {dob.strftime('%d-%m-%Y')}")
+
+            else:
+                print('Student Not Found')
 
         elif choice==5:
             pass

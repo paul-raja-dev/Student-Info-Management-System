@@ -1,4 +1,5 @@
 import db_connection
+import MySQLdb
 
 def add_student(values):
     query="""
@@ -34,7 +35,7 @@ def search_student(student_id):
            SELECT * FROM students WHERE student_id=%s;
           """
     conn=db_connection.get_connection()
-    cur=conn.cursor()
+    cur=conn.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(query,(student_id,))
     data=cur.fetchall()
 
@@ -48,5 +49,3 @@ def update_student():
 
 def delete_student():
     pass
-
-search_student(202)
