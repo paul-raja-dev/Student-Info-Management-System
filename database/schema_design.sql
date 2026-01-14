@@ -9,6 +9,7 @@ CREATE TABLE students(
     gender VARCHAR(1),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
+ALTER TABLE students AUTO_INCREMENT = 201;
 
 CREATE TABLE subjects(
     subject_id INT PRIMARY KEY AUTO_INCREMENT,
