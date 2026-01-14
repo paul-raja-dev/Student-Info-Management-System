@@ -54,5 +54,14 @@ def update_subject(field,values):
     cur.close()
     conn.close()
 
-def delete_subject():
-    pass
+def delete_subject(subject_id):
+    query=f"""
+           DELETE FROM subjects WHERE subject_id = %s;
+          """
+    conn=db_connection.get_connection()
+    cur=conn.cursor()
+    cur.execute(query,(subject_id,))
+    conn.commit()
+
+    cur.close()
+    conn.close()

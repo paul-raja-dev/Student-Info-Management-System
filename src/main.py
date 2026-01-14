@@ -186,7 +186,12 @@ def subject():
                 print('Course Not Found..')
 
         elif choice==5:
-            pass
+            print('-----------------------------')
+            print('Delete Subject ')
+            print('-----------------------------')
+            sub_id=int(input('Enter the Subject ID to Delete : '))
+            subjects.delete_subject(sub_id)
+            print('Subject Deleted Success..')
 
         else:
             print('Please Enter the valid choice')
