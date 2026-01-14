@@ -23,8 +23,24 @@ def view_student():
     cur=conn.cursor()
     cur.execute(query)
     data=cur.fetchall()
+
     cur.close()
     conn.close()
+
+    return data
+
+def search_student(student_id):
+    query="""
+           SELECT * FROM students WHERE student_id=%s;
+          """
+    conn=db_connection.get_connection()
+    cur=conn.cursor()
+    cur.execute(query,(student_id,))
+    data=cur.fetchall()
+
+    cur.close()
+    conn.close()
+    
     return data
 
 def update_student():
@@ -32,3 +48,5 @@ def update_student():
 
 def delete_student():
     pass
+
+search_student(202)

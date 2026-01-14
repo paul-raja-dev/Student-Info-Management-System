@@ -3,7 +3,9 @@ def student():
         print(""" 
             1 -> Add student
             2 -> View the Available Students
-            3 -> Update the Existing Date
+            3 -> Search student
+            4 -> Update student
+            5 -> Delete student
             """)
         
         choice=int(input('Enter your choice : '))
@@ -27,6 +29,17 @@ def student():
             print('\nData has Been fetched......\n')
          
         elif choice==3:
+            print('-------------------')
+            print('Search Student')
+            print('-------------------')
+            student_id=int(input('Enter the Student id to Search : '))
+            info=students.search_student(student_id)
+            print(f'\n Student Details : \n {info}')
+
+        elif choice==4:
+            pass
+
+        elif choice==5:
             pass
         else:
             print('Enter the correct chocie... ')
