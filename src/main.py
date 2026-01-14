@@ -1,12 +1,9 @@
 import students
 def student():
-
-    while True:
         print(""" 
             1 -> Add student
             2 -> View the Available Students
             3 -> Update the Existing Date
-            4 -> Exit the menu
             """)
         
         choice=int(input('Enter your choice : '))
@@ -22,13 +19,15 @@ def student():
             print('Student Entry Successfull.....')
 
         elif choice==2:
-            pass
-
-            
+            print('\nViewing the Database......\n')
+            data=students.view_student()
+            for value in data:
+                print(value)
+            print('\nxxxx----End of the Table----xxxx\n')
+            print('\nData has Been fetched......\n')
+         
         elif choice==3:
             pass
-        elif choice==4:
-            break
         else:
             print('Enter the correct chocie... ')
  
@@ -38,7 +37,7 @@ def student():
 
 def main():
     while True:
-        print("""             STUDENT MANAGEMENT SOFTWARE 
+        print("""\n            STUDENT MANAGEMENT SOFTWARE 
                  1 -> Students Table
                  2 -> Subject Table
                  3 -> marks Table

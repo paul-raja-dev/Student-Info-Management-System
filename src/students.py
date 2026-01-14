@@ -16,7 +16,16 @@ def add_student(values):
 
 
 def view_student():
-    pass
+    query="""
+            SELECT * FROM students;
+          """
+    conn=db_connection.get_connection()
+    cur=conn.cursor()
+    cur.execute(query)
+    data=cur.fetchall()
+    cur.close()
+    conn.close()
+    return data
 
 def update_student():
     pass
