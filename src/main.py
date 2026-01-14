@@ -93,7 +93,12 @@ def student():
                 print('Student Not Found')
 
         elif choice==5:
-            pass
+            print('-------------------')
+            print('Delete student')
+            print('-------------------')
+            student_id=int(input('Enter the Student id to Update : '))
+            students.delete_student(student_id)
+            print('Student Enter Deleted Successfully........')
         else:
             print('Enter the correct chocie... ')
  

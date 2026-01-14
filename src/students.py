@@ -56,5 +56,14 @@ def update_student(field,value,student_id):
     cur.close()
     conn.close()
 
-def delete_student():
-    pass
+def delete_student(student_id):
+    query="""
+           DELETE FROM students WHERE student_id=%s;
+           """
+    conn=db_connection.get_connection()
+    cur=conn.cursor()
+    cur.execute(query,(student_id,))
+    conn.commit()
+
+    cur.close()
+    conn.close()
