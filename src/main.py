@@ -135,17 +135,61 @@ def subject():
             print('-----------------------------')
             sub_id=int(input('Enter the Subject ID : '))
             info=subjects.search_subject(sub_id)
-            print(info)
+            if info:
+                print(f"""
+                         Subject ID : {info[0]['subject_id']}
+                         Subject Code : {info[0]['subject_code']}
+                         Subject Name : {info[0]['subject_name']}
+                         Subject Credits : {info[0]['credits']}
+                       """)
+            else:
+                print('Subject Not Found')
+
 
         elif choice==4:
-            pass
+            print('-----------------------------')
+            print('Update Subject ')
+            print('-----------------------------')
+            sub_id=int(input('Enter the subject ID : '))
+            info=subjects.search_subject(sub_id)
+            if info:
+                 print('Subject Found And Current Details : ')
+                 print(f"""
+                         Subject ID : {info[0]['subject_id']}
+                         Subject Code : {info[0]['subject_code']}
+                         Subject Name : {info[0]['subject_name']}
+                         Subject Credits : {info[0]['credits']}
+                       """)
+                 
+                 print(""" 
+                        1 -> Update Course_code
+                        2 -> Update Course_name
+                        3 -> update Credits
+                        """)
+                 choice=int(input('Entet Your Choice : '))
+                 if choice==1:
+                     updated_code=input('Enter the New Course Code : ')
+                     subjects.update_subject('subject_code',(updated_code,sub_id))
+                     print('Subject Updated Successfully')
+                 elif choice==2:
+                     updated_name=input('Enter the New Course Name : ')
+                     subjects.update_subject('subject_name',(updated_name,sub_id))
+                     print('Subject Updated Successfully')
+                 elif choice==3:
+                     updated_credits=input('Enter the New Credits : ')
+                     subjects.update_subject('credits',(updated_credits,sub_id))
+                     print('Subject Updated Successfully')
+
+                 else:
+                     print('Please Enter The Vaild Choice...')
+            else:
+                print('Course Not Found..')
 
         elif choice==5:
             pass
 
         else:
-            print('Please Enter the Valid Choice')
-
+            print('Please Enter the valid choice')
 
 def main():
     while True:

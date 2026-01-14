@@ -1,4 +1,5 @@
 import db_connection
+import MySQLdb
 
 def add_subject(values):
     query="""
@@ -32,7 +33,7 @@ def search_subject(sub_id):
            SELECT * FROM subjects WHERE subject_id = %s;
          """
     conn=db_connection.get_connection()
-    cur=conn.cursor()
+    cur=conn.cursor(MySQLdb.cursors.DictCursor)
     cur.execute(query,(sub_id,))
     info=cur.fetchall()
 
@@ -41,8 +42,17 @@ def search_subject(sub_id):
 
     return info
 
-def update_subject():
-    pass
+def update_subject(field,values):
+    query=f"""
+           UPDATE subjects SET {field}= %s WHERE subject_id= %s ;
+         """
+    conn=db_connection.get_connection()
+    cur=conn.cursor()
+    cur.execute(query,(values))
+    conn.commit()
+
+    cur.close()
+    conn.close()
 
 def delete_subject():
     pass
