@@ -44,8 +44,17 @@ def search_student(student_id):
     
     return data
 
-def update_student():
-    pass
+def update_student(field,value,student_id):
+    query=f"""
+          UPDATE students SET {field}= %s WHERE student_id= %s;   
+           """
+    conn=db_connection.get_connection()
+    cur=conn.cursor()
+    cur.execute(query,(value,student_id))
+    conn.commit()
+
+    cur.close()
+    conn.close()
 
 def delete_student():
     pass

@@ -61,7 +61,34 @@ def student():
                 print(f"Gender : {info[0]['gender']}")
                 dob=info[0]['date_of_birth']
                 print(f"Date Of Birth : {dob.strftime('%d-%m-%Y')}")
-
+                print("""   1 -> Update Register No
+                            2 -> Update Name
+                            3 -> update E-mail
+                            4 -> update Gender
+                            5 -> Update Date of Birth """)
+                choice=int(input('Enter Your choice : '))
+                if choice==1:
+                    updated_regno=input('Enter the new register number : ')
+                    students.update_student('register_number',updated_regno,student_id)
+                    print('Student register number updated success...')
+                elif choice==2:
+                    updated_name=input('Enter the new name : ')
+                    students.update_student('full_name',updated_name,student_id)
+                    print('Student register number updated success...')
+                elif choice==3:
+                    updated_email=input('Enter the new E-mail : ')
+                    students.update_student('e_mail',updated_email,student_id)
+                    print('Student register number updated success...')
+                elif choice==4:
+                    updated_gender=input('Enter the new Gender(M/F) : ')
+                    students.update_student('gender',updated_gender,student_id)
+                    print('Student register number updated success...')
+                elif choice==5:
+                    updated_dob=input('Enter the new DOB(YYYY-MM-DD) : ')
+                    students.update_student('date_of_birth',updated_dob,student_id)
+                    print('Student register number updated success...')
+                else:
+                    print('Enter the vaild choice....')
             else:
                 print('Student Not Found')
 
