@@ -1,5 +1,7 @@
 import students
 import subjects
+import marks
+
 def student():
         print(""" 
             1 -> Add student
@@ -196,9 +198,75 @@ def subject():
         else:
             print('Please Enter the valid choice')
 
+
+def mark():
+        print(""" 
+            1 -> Add Marks
+            2 -> View the Available Marks
+            3 -> View Marks By Student ID
+            4 -> Update Marks 
+            5 -> Delete Marks By Student ID 
+            """)
+        choice=int(input('Enter Your choice : '))
+        if choice==1:
+            student_id=int(input('Enter the student ID : '))
+            subject_id=int(input('Enter the subject ID : '))
+            sub_marks=int(input('Enter the marks scored : '))
+            grade=input('Enter the Grade : ')
+            marks.add_marks((student_id,subject_id,sub_marks,grade))
+            print('Subject Added successfully')
+        elif choice==2:
+            print('-----------------------------')
+            print('View the available marks..')
+            print('-----------------------------')
+            data=marks.view_marks()
+            for line in data:
+                print(line)
+            print('\n End of the Table ')         
+        elif choice==3:
+            student_id=int(input('Enter the Student ID : '))
+            info=marks.search_student_s_id(student_id)
+            if info:
+               print(info)
+            else:
+                print('Marks Not Found')        
+        elif choice==4:
+            mark_id=int(input('Enter the Subject ID : '))
+            info=marks.search_student(mark_id)
+            if info:
+               print(f""" Exisiting DATA :
+                         Marks ID : {info[0]['marks_id']}
+                         Student ID : {info[0]['student_id']}
+                         Subject ID : {info[0]['subject_id']}
+                         Marks Scored : {info[0]['marks']}
+                         Grade Obtained : {info[0]['grade']}
+                       """)
+               
+            else:
+                print('Marks Not Found')        
+
+            
+        elif choice==5:
+            print('-----------------------------')
+            print('Delete Student By Student ID ')
+            print('-----------------------------')
+            student_id=int(input('Enter the student ID : '))
+            info=students.search_student(student_id)
+            if info:
+                marks.delete_student(student_id)
+                print('Marks Entry Deleted Success..')
+            else:
+                print('Marks Entry Not Found...')
+        else:
+            print('Pleae enter the valid Choice..')
+
+    
+
 def main():
     while True:
-        print("""\n            STUDENT MANAGEMENT SOFTWARE 
+        print("""\n  
+                      STUDENT MANAGEMENT SOFTWARE 
+                    -------------------------------
                  1 -> Students Table
                  2 -> Subject Table
                  3 -> marks Table
@@ -209,7 +277,7 @@ def main():
         elif choice==2:
             subject()
         elif choice==3:
-            marks()
+            mark()
         elif choice==4:
             break
         else:

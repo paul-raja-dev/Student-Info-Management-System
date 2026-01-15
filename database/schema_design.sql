@@ -17,7 +17,7 @@ CREATE TABLE subjects(
     subject_name VARCHAR(50),
     credits INT
 );
-ALTER TABLE marks AUTO_INCREMENT =301;
+ALTER TABLE subjects AUTO_INCREMENT = 301;
 
 CREATE TABLE marks(
     marks_id INT PRIMARY KEY AUTO_INCREMENT,
@@ -28,3 +28,4 @@ CREATE TABLE marks(
     FOREIGN KEY(student_id) REFERENCES students(student_id) ON DELETE CASCADE,
     FOREIGN KEY(subject_id) REFERENCES subjects(subject_id) ON DELETE CASCADE
 );
+ALTER TABLE marks AUTO_INCREMENT = 401;
