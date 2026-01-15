@@ -204,8 +204,9 @@ def mark():
             1 -> Add Marks
             2 -> View the Available Marks
             3 -> View Marks By Student ID
-            4 -> Update Marks 
-            5 -> Delete Marks By Student ID 
+            4 -> View Marks By subjects
+            4 -> Update Marks
+            6 -> Delete Marks By Student ID 
             """)
         choice=int(input('Enter Your choice : '))
         if choice==1:
@@ -229,10 +230,18 @@ def mark():
             if info:
                print(info)
             else:
-                print('Marks Not Found')        
+                print('Student Not Found')  
         elif choice==4:
-            mark_id=int(input('Enter the Subject ID : '))
-            info=marks.search_student(mark_id)
+            subject_id=int(input('Enter the Subject ID : '))
+            info = marks.search_by_sub_id(subject_id)
+            if info:
+                print(info)
+            else:
+                print('Data Not Available')
+
+        elif choice==5:
+            student_id=int(input('Enter the Student ID : '))
+            info=marks.search_student(student_id)
             if info:
                print(f""" Exisiting DATA :
                          Marks ID : {info[0]['marks_id']}
@@ -241,12 +250,26 @@ def mark():
                          Marks Scored : {info[0]['marks']}
                          Grade Obtained : {info[0]['grade']}
                        """)
+               print("""\n
+                       1 -> Update Subject ID
+                       2 -> Update Marks Scored
+                       3 -> Update Grade              
+                  """)
+               choice=int(input('Enter Your Choice : '))
+               if choice==1:
+                   pass
+               elif choice==2:
+                   pass
+               elif choice==3:
+                   pass
+               else:
+                   print('Please Enter the Valid Choice...')
                
             else:
                 print('Marks Not Found')        
 
             
-        elif choice==5:
+        elif choice==6:
             print('-----------------------------')
             print('Delete Student By Student ID ')
             print('-----------------------------')

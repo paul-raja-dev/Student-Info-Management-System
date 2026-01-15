@@ -28,13 +28,27 @@ def view_marks():
 
     return data
 
-def search_student_s_id(marks_id):
+def search_student_s_id(stduent_id):
     query="""
            SELECT * FROM marks WHERE student_id = %s ;
         """
     conn=db_connection.get_connection()
     cur=conn.cursor(MySQLdb.cursors.DictCursor)
-    cur.execute(query,(marks_id,))
+    cur.execute(query,(stduent_id,))
+    info=cur.fetchall()
+
+    cur.close()
+    conn.close()
+
+    return info
+
+def search_by_sub_id(sub_id):
+    query="""
+           SELECT * FROM marks WHERE subject_id = %s ;
+       """
+    conn=db_connection.get_connection()
+    cur=conn.cursor(MySQLdb.cursors.DictCursor)
+    cur.execute(query,(sub_id,))
     info=cur.fetchall()
 
     cur.close()
