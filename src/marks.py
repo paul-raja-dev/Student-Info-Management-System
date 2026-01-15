@@ -71,7 +71,7 @@ def delete_student(student_id):
 
 def update_marks(field,values):
     query=f"""
-           UPDATE marks SET {field} = %s WHERE student_id = %s;
+           UPDATE marks SET {field} = %s WHERE student_id = %s AND subject_id = %s;
         """
     conn=db_connection.get_connection()
     cur=conn.cursor()

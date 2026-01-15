@@ -242,14 +242,9 @@ def mark():
         elif choice==5:
             student_id=int(input('Enter the Student ID : '))
             info=marks.search_by_stu_id(student_id)
-            if info:
-               print(f""" Exisiting DATA :
-                         Marks ID : {info[0]['marks_id']}
-                         Student ID : {info[0]['student_id']}
-                         Subject ID : {info[0]['subject_id']}
-                         Marks Scored : {info[0]['marks']}
-                         Grade Obtained : {info[0]['grade']}
-                       """)
+            if info:  
+               print(info)
+               sub_id=int(input('Enter the Subeject Id : '))
                print("""\n
                        1 -> Update Subject ID
                        2 -> Update Marks Scored
@@ -258,15 +253,15 @@ def mark():
                choice=int(input('Enter Your Choice : '))
                if choice==1:
                    updated_sub_id=int(input('Enter the new Sub ID : '))
-                   marks.update_marks('subject_id',(updated_sub_id,student_id))
+                   marks.update_marks('subject_id',(updated_sub_id,student_id,sub_id))
                    print('Subject ID updated Successfully...')
                elif choice==2:
                    updated_marks=int(input('Enter the New Marks : '))
-                   marks.update_marks('marks',(updated_marks,student_id))
+                   marks.update_marks('marks',(updated_marks,student_id,sub_id))
                    print('Marks Updated Successfully.......')
                elif choice==3:
                    updated_grade=input('Enter the New Grade :')
-                   marks.update_marks('grade',(updated_grade,student_id))
+                   marks.update_marks('grade',(updated_grade,student_id,sub_id))
                    print('Grade updated Successfully........')
                else:
                    print('Please Enter the Valid Choice...')
