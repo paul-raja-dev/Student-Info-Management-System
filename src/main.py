@@ -205,7 +205,7 @@ def mark():
             2 -> View the Available Marks
             3 -> View Marks By Student ID
             4 -> View Marks By subjects
-            4 -> Update Marks
+            5 -> Update Marks
             6 -> Delete Marks By Student ID 
             """)
         choice=int(input('Enter Your choice : '))
@@ -226,7 +226,7 @@ def mark():
             print('\n End of the Table ')         
         elif choice==3:
             student_id=int(input('Enter the Student ID : '))
-            info=marks.search_student_s_id(student_id)
+            info=marks.search_by_stu_id(student_id)
             if info:
                print(info)
             else:
@@ -241,7 +241,7 @@ def mark():
 
         elif choice==5:
             student_id=int(input('Enter the Student ID : '))
-            info=marks.search_student(student_id)
+            info=marks.search_by_stu_id(student_id)
             if info:
                print(f""" Exisiting DATA :
                          Marks ID : {info[0]['marks_id']}
@@ -257,16 +257,22 @@ def mark():
                   """)
                choice=int(input('Enter Your Choice : '))
                if choice==1:
-                   pass
+                   updated_sub_id=int(input('Enter the new Sub ID : '))
+                   marks.update_marks('subject_id',(updated_sub_id,student_id))
+                   print('Subject ID updated Successfully...')
                elif choice==2:
-                   pass
+                   updated_marks=int(input('Enter the New Marks : '))
+                   marks.update_marks('marks',(updated_marks,student_id))
+                   print('Marks Updated Successfully.......')
                elif choice==3:
-                   pass
+                   updated_grade=input('Enter the New Grade :')
+                   marks.update_marks('grade',(updated_grade,student_id))
+                   print('Grade updated Successfully........')
                else:
                    print('Please Enter the Valid Choice...')
                
             else:
-                print('Marks Not Found')        
+                print('Data Not Available.')        
 
             
         elif choice==6:
@@ -274,7 +280,7 @@ def mark():
             print('Delete Student By Student ID ')
             print('-----------------------------')
             student_id=int(input('Enter the student ID : '))
-            info=students.search_student(student_id)
+            info=marks.search_by_stu_id(student_id)
             if info:
                 marks.delete_student(student_id)
                 print('Marks Entry Deleted Success..')

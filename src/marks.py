@@ -28,7 +28,7 @@ def view_marks():
 
     return data
 
-def search_student_s_id(stduent_id):
+def search_by_stu_id(stduent_id):
     query="""
            SELECT * FROM marks WHERE student_id = %s ;
         """
@@ -69,3 +69,15 @@ def delete_student(student_id):
     cur.close()
     conn.close()
 
+def update_marks(field,values):
+    query=f"""
+           UPDATE marks SET {field} = %s WHERE student_id = %s;
+        """
+    conn=db_connection.get_connection()
+    cur=conn.cursor()
+    cur.execute(query,(values))
+    conn.commit()
+
+    cur.close()
+    conn.close()
+    
