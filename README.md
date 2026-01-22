@@ -56,18 +56,27 @@ The project was initially implemented as a file-based system and later migrated 
 
 ---
 
-## -- How to Use
+---
 
-### 1. Clone the repository
+## Migration Note
+The legacy file-based implementation is preserved in the `legacy_file_version/` directory to demonstrate the migration process from flat-file storage to a relational **MySQL** database.
 
-```bash
-git clone https://github.com/paul-raja-dev/Student-Info-Management-System.git
-cd Student-Info-Management-System
+---
 
-### 2. Create and activate a virtual environment
+## Future Enhancements
+* **Authentication & Roles:** Implementing secure login and role-based access control.
+* **Input Validation:** Adding a robust validation layer for data integrity.
+* **Performance Reports:** Generating automated student-wise performance analytics.
+* **REST API:** Transitioning the system to a web-based architecture using **Flask** or **FastAPI**.
 
-```bash
-python -m venv .venv
-source .venv/bin/activate
+---
+
+## Author
+**Paul Raja** GitHub: [https://github.com/paul-raja-dev](https://github.com/paul-raja-dev)
+
+---
+
+## License
+This project is for **educational use only**.
 
 
