@@ -64,4 +64,10 @@ The project was initially implemented as a file-based system and later migrated 
 git clone https://github.com/paul-raja-dev/Student-Info-Management-System.git
 cd Student-Info-Management-System
 
+### 2. Create and activate a virtual environment
+
+```bash
+python -m venv .venv
+source .venv/bin/activate
+
 
